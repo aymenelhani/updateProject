@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<body>
+	<f:view>
+		<h1>Login Page</h1>
+		<h:form>
+			<p:panel id="panel1" header="welcome to our validation Project"
+				toggleable="true">
+				<h:panelGrid columns="3" cellpadding="4" cellspacing="4">
+
+					<h:outputLabel value="login" />
+					<p:inputText id="login" value="#{loginBean.login}" required="true"></p:inputText>
+					<p:message for="login"></p:message>
+
+
+					<h:outputLabel value="password" />
+					<p:password id="inlineFeedback" value="#{loginBean.pwd}"
+						feedback="true" inline="true" rendered="true" />
+					<p:message for="inlineFeedback"></p:message>
+
+
+				</h:panelGrid>
+				<p:commandButton value="Valider" action="#{loginBean.doLogin}"></p:commandButton>
+			</p:panel>
+
+		</h:form>
+
+	</f:view>
+</body>
+</html>

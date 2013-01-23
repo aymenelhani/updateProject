@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+<h1>managing Student Page</h1>
+	<f:view>
+		<h:form>
+			<p:panel id="panel2" header="add a Student" toggleable="true">
+				<p:panelGrid columns="2">
+					<h:outputText value="name of the Student" />
+					<p:inputText value="#{managementCtr.student.nameStudent}"></p:inputText>
+					<h:outputText value="date of Affectation of the Student" />
+					<p:inputText value="to be completed by you ... "></p:inputText>
+					<h:outputText value="email of the Student" />
+					<p:inputText value="to be completed by you ..."></p:inputText>
+					
+					
+				</p:panelGrid>
+				<p:commandButton value="add Student"
+					action="#{managementCtr.doAddStudent}"></p:commandButton>
+			</p:panel>
+
+		</h:form>
+
+	</f:view>
+</body> 
+</html>
