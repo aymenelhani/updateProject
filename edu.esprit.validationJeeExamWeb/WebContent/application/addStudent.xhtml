@@ -9,20 +9,32 @@
 <body> 
 <h1>managing Student Page</h1>
 	<f:view>
-		<h:form>
+		<h:form id="f1">
+		 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />  
 			<p:panel id="panel2" header="add a Student" toggleable="true">
-				<p:panelGrid columns="2">
+				<p:panelGrid columns="3">
 					<h:outputText value="name of the Student" />
-					<p:inputText value="#{managementCtr.student.nameStudent}"></p:inputText>
+					<p:inputText id="studentIn" value="#{managementCtr.student.nameStudent}" required="true ">
+					<f:validateRequired for="studentIn"></f:validateRequired> 
+					</p:inputText>
+					<p:message for="studentIn" display="text"> </p:message>
 					<h:outputText value="date of Affectation of the Student" />
-					<p:inputText value="to be completed by you ... "></p:inputText>
+					<p:inputText value="#{managementCtr.student.dateOfAffectation}" id="date">
+					<f:convertDateTime pattern="MM/dd/yyyy"/>
+					</p:inputText>
+					<p:message display="text" for="date"></p:message>
 					<h:outputText value="email of the Student" />
-					<p:inputText value="to be completed by you ..."></p:inputText>
+					<p:inputText id="mailIn" value="to be completed by you ...">
 					
+					<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" for="mailIn" /> 
+<!-- 					<f:validateLength minimum="2" />  -->
+					</p:inputText>
+					<p:message for="mailIn" display="icon"> </p:message>
 					
 				</p:panelGrid>
-				<p:commandButton value="add Student"
+				<p:commandButton value="add Student" update="panel2"
 					action="#{managementCtr.doAddStudent}"></p:commandButton>
+					<p:commandButton action="listProject.xhtml?faces-redirect=true" value="choose project"/>
 			</p:panel>
 
 		</h:form>

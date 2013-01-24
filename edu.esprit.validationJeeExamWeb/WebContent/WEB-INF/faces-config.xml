@@ -5,5 +5,32 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
     version="2.1">
+	<navigation-rule>
+		<display-name>application/login.xhtml</display-name>
+		<from-view-id>/application/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ok</from-outcome>
+			<to-view-id>/application/addStudent.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>application/login.xhtml</display-name>
+		<from-view-id>/application/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ko</from-outcome>
+			<to-view-id>/application/erreur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>application/listProject.xhtml</display-name>
+		<from-view-id>/application/listProject.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edit</from-outcome>
+			<to-view-id>/application/updteProject.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

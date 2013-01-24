@@ -1,8 +1,10 @@
 package edu.esprit.validationJeeExamWeb.ctr;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -17,19 +19,40 @@ public class ManagementCtr {
 	private Student student = new Student();
 	private PiDevProject piDevProject = new PiDevProject();
 	private DataModel<PiDevProject> dataModel = new ListDataModel<PiDevProject>();
+	
+	private PiDevProject editPidDevProject;
 
 	// dependency injection
 	@EJB
 	private ApplicationManagementLocal applicationManagementLocal;
 
 	// methods
+	
+	
+	public String doUpdatePiDev(){
+		
+		applicationManagementLocal.updatePiDevProject(editPidDevProject);
+		return "";
+	}
+	
+	public String doRedirectUpdatePiDev(){
+		
+		editPidDevProject = (PiDevProject) dataModel.getRowData();
+		System.out.println("redirect");
+		return "edit";
+		
+	}
+	
+	
 	public String doAddPiDevProject() {
 		applicationManagementLocal.addPiDevProject(piDevProject);
 		return "";
 	}
 
 	public String doAddStudent() {
+		student.setPiDevProject((PiDevProject)dataModel.getRowData());
 		applicationManagementLocal.addStudent(student);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome "));  
 		return "";
 	}
 
@@ -58,5 +81,15 @@ public class ManagementCtr {
 	public void setDataModel(DataModel<PiDevProject> dataModel) {
 		this.dataModel = dataModel;
 	}
+
+	public PiDevProject getEditPidDevProject() {
+		return editPidDevProject;
+	}
+
+	public void setEditPidDevProject(PiDevProject editPidDevProject) {
+		this.editPidDevProject = editPidDevProject;
+	}
+	
+	
 
 }

@@ -32,8 +32,17 @@
 					<f:facet name="header">
 						<h:outputText value="operation"></h:outputText>
 					</f:facet>
-					<h:commandButton action="update" value="update project" />
+					<h:commandButton action="#{managementCtr.doRedirectUpdatePiDev}" value="update project" />
 				</h:column>
+				
+					<h:column id="column5">
+					<f:facet name="header">
+						<h:outputText value="operation"></h:outputText>
+					</f:facet>
+					<p:commandButton action="#{managementCtr.doAddStudent}" value="confirm"> </p:commandButton>
+
+				</h:column>
+				
 			</h:dataTable>
 
 		</h:form>
